@@ -119,7 +119,7 @@ class ReCaptchaToken {
    */
   protected function secretKey() {
     if (! isset($this->site_secret))
-      throw new BadMethodCallException("Missing site_secret");
+      throw new \BadMethodCallException("Missing site_secret");
 
     $secret_hash = hash('sha1', $this->site_secret, true);
     return substr($secret_hash, 0, 16);
