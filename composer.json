@@ -1,0 +1,8 @@
+{
+  "name": "slushie/recaptcha-secure-token",
+  "description": "Generate ReCaptcha-compatible secure tokens",
+  "require": {
+    "php": ">= 5.4.0",
+    "ext-mcrypt": "*"
+  }
+}
