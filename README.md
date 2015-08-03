@@ -16,7 +16,7 @@ From within your PHP code, you can create an instance of the `ReCaptchaToken` cl
 and pass in your `site_key` and `site_secret` values:
 
     $config = ['site_key' => 'YOUR_SITE_KEY', 'site_secret' => 'YOUR_SITE_SECRET'];
-    $recaptchaToken = new ReCaptchaToken($config);
+    $recaptchaToken = new \ReCaptchaSecureToken\ReCaptchaToken($config);
 
 To generate a *secure token* you must provide a unique `session_id`:
 
