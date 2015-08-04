@@ -12,7 +12,7 @@ class ReCaptchaToken {
   protected $site_key;
   protected $site_secret;
 
-  public function __construct(array $config = []) {
+  public function __construct($config = array()) {
     if (isset($config['site_key']))
       $this->site_key = $config['site_key'];
 
@@ -53,7 +53,7 @@ class ReCaptchaToken {
   public function secureToken($session_id, $timestamp = null) {
     if (is_null($timestamp)) $timestamp = $this->currentTimestamp();
 
-    $params = ['session_id' => $session_id, 'ts_ms' => $timestamp];
+    $params = array('session_id' => $session_id, 'ts_ms' => $timestamp);
     $plaintext = json_encode($params);
 
     $encrypted = $this->encryptData($plaintext);
@@ -190,7 +190,7 @@ class ReCaptchaToken {
    * @return string
    */
   protected function base64Encode($input) {
-    return str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($input));
+    return str_replace(array('+', '/', '='), array('-', '_', ''), base64_encode($input));
   }
 
   /**
@@ -200,7 +200,7 @@ class ReCaptchaToken {
    * @return string
    */
   protected function base64Decode($input) {
-    return base64_decode(str_replace(['-', '_'], ['+', '/'], $input));
+    return base64_decode(str_replace(array('-', '_'), array('+', '/'), $input));
   }
 
 }
