@@ -47,7 +47,7 @@ class ReCaptchaToken {
    * @see https://developers.google.com/recaptcha/docs/secure_token
    *
    * @param string $session_id a unique session identifier.
-   * @param int|null $timestamp in milliseconds, defaults to current time.
+   * @param float|null $timestamp in milliseconds, defaults to current time.
    * @return string Recaptcha-compatible base64 encoded encrypted binary data.
    */
   public function secureToken($session_id, $timestamp = null) {
@@ -106,10 +106,10 @@ class ReCaptchaToken {
   /**
    * Get the current timestamp in milliseconds.
    *
-   * @return int
+   * @return float
    */
   protected function currentTimestamp() {
-    return intval(round(microtime(true) * 1000));
+    return round(microtime(true) * 1000);
   }
 
   /**
