@@ -29,6 +29,17 @@ Finally, use this token value in your HTML output. For example:
          data-sitekey="YOUR_SITE_KEY"
          data-stoken="<?php echo $secureToken ?>"></div>
 
+### Timestamp
+
+Being a time-based protocol, the timestamp must be accurate. If your system clock is not accurate (try `ntpdate`), you must pass an accurate timestamp (in ms) to `secureToken`. You can obtain one from an [NTP](https://github.com/bt51/ntp) server, e.g.:
+
+    $socket = new Bt51\NPM\Socket('0.pool.ntp.org', 123);
+    $ntp_client = new Bt51\NPM\Client($socket);
+    $timestamp = $ntp_client->getTime()->getTimestamp() * 1000;
+
+    $sessionId = uniqid('recaptcha');
+    $secureToken = $recaptchaToken->secureToken($sessionId, $timestamp);
+
 ## Algorithm Implementation
 
 The original ReCaptcha algorithm is undocumented, although 
